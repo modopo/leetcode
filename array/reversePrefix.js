@@ -4,8 +4,6 @@ Given a 0-indexed string word and a character ch, reverse the segment of word th
 For example, if word = "abcdefd" and ch = "d", then you should reverse the segment that starts at 0 and ends at 3 (inclusive). The resulting string will be "dcbaefd".
 Return the resulting string.
 
- 
-
 Example 1:
 
 Input: word = "abcdefd", ch = "d"
