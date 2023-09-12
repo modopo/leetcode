@@ -40,13 +40,5 @@ console.log(
 );
 
 function intersectionEvery(nums) {
-  let result = [];
 
-  for (let i = 0; i < nums[0].length; i++) {
-    if (nums.every(arr => arr.includes(nums[0][i]))) {
-      result.push(nums[0][i]);
-    }
-  }
-
-  return result.sort((a, b) => a - b);
 };
