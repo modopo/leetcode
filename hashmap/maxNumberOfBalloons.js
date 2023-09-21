@@ -24,5 +24,7 @@ function maxNumberOfBallons(text) {
     count.set(text[idx], (count.get(text[idx]) || 0) + 1);
   }
 
-  
+  return Math.floor(Math.min(count.get('b') || 0, count.get('a') || 0, count.get('l')/2 || 0, count.get('o')/2 || 0, count.get('n') || 0));
 }
+
+console.log(maxNumberOfBallons('leetcode'));
