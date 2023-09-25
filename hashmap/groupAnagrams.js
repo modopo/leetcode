@@ -7,5 +7,23 @@ For example, given strs = ["eat","tea","tan","ate","nat","bat"], return [["bat"]
 */
 
 function groupAnagrams(strs) {
-  
+  let groups = new Map();
+
+  for (const word of strs) {
+    let key = word.split('').sort().join('');
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+
+    groups.get(key).push(word);
+  }
+
+  let result = [];
+  for (const group of groups.values()) {
+    result.push(group);
+  }
+
+  return result;
 }
+
+console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]));
