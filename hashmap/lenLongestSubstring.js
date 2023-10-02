@@ -18,23 +18,24 @@
 // Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
 function lengthOfLongestSubstring(s) {
-  let left = 0, right = 0, result = 0;
+  let left = 0,
+    right = 0,
+    result = 0;
   let count = new Map();
-  
+
   while (right < s.length) {
     count.set(s[right], (count.get(s[right]) || 0) + 1);
 
     while (count.get(s[right]) > 1) {
-      count.set(s[left], count.get(s[left] - 1))
+      count.set(s[left], count.get(s[left]) - 1);
       left++;
     }
 
     result = Math.max(result, right - left + 1);
-
     right++;
   }
 
   return result;
 }
 
-console.log(lengthOfLongestSubstring('abcdefgbqwtyxi'));
+console.log(lengthOfLongestSubstring("abcabcbb"));
