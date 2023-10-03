@@ -5,7 +5,7 @@
 // Example 1:
 
 // Input: path = "NES"
-// Output: false 
+// Output: false
 // Explanation: Notice that the path doesn't cross any point more than once.
 // Example 2:
 
@@ -14,23 +14,27 @@
 // Explanation: Notice that the path visits the origin twice.
 
 function isPathCrossing(path) {
-  let count = new Map();
+  let coordinate = new Map();
+  coordinate.set("0,0", "");
 
-  for (const direction of path) {
-    count.set(direction, (count.get(direction) || 0) + 1);
-  }
+  let x = 0,
+    y = 0;
 
-  let number = null;
+  for (let i = 0; i < path.length; i++) {
+    if (path[i] === "N") y++;
+    else if (path[i] === "S") y--;
+    else if (path[i] === "E") x++;
+    else if (path[i] === "W") x--;
 
-  for (let val of count.values()) {
-    if (number === null) {
-      number = val;
-    } else if (number !== val) {
-      return false;
+    let coor = [x, y].join(",");
+    if (coordinate.has(coor)) {
+      return true;
     }
+
+    coordinate.set(coor, path[i]);
   }
 
-  return true;
+  return false;
 }
 
-console.log(isPathCrossing('NESWW'));
+console.log(isPathCrossing("NES"));
