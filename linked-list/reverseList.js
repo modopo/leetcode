@@ -9,6 +9,7 @@ test.add(4);
 test.add(5);
 test.add(6);
 
+
 function reverseList(head) {
     let prev = null;
     let curr = head.head;
