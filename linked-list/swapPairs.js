@@ -18,26 +18,17 @@ function swapPairs(head) {
   let prev = null;
   let curr = head.head;
 
-  let result = head.head.next;
+  let result = curr.next;
 
   while (curr && curr.next) {
-    let next = curr.next.next;
-
+    let nextNode = curr.next.next;
+    
     prev = curr;
-    curr = curr.next;
-
-    curr.next = prev;
-    prev.next = next;
-
-    curr = next;
+    curr.next.next = curr;
+    curr.next = nextNode;
+    curr = nextNode;
   }
-
-  while (result) {
-    console.log(result.val);
-    result = result.next;
-  }
-
   return result;
 }
 
-swapPairs(test);
+console.log(swapPairs(test));
