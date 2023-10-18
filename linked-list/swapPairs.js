@@ -21,6 +21,10 @@ function swapPairs(head) {
   let result = curr.next;
 
   while (curr && curr.next) {
+    if (prev) {
+      prev.next = curr.next;
+    }
+    
     let nextNode = curr.next.next;
     
     prev = curr;
@@ -28,7 +32,12 @@ function swapPairs(head) {
     curr.next = nextNode;
     curr = nextNode;
   }
+
+  while (result) {
+    console.log(result.val);
+    result = result.next;
+  }
   return result;
 }
 
-console.log(swapPairs(test));
+swapPairs(test);
