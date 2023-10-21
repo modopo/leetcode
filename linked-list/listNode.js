@@ -1,6 +1,6 @@
-function ListNode(val, next) {
+function listNode(val, next) {
   this.val = val === undefined ? 0 : val;
   this.next = next === undefined ? null : next;
 }
 
-export default ListNode;
+export default listNode;
