@@ -24,7 +24,8 @@ let test = new listNode(
 
 function removeDuplicates(head) {
   let sent = new listNode(0, head);
-  let curr = sent, prev = sent;
+  let curr = sent,
+    prev = sent;
 
   while (curr.next && curr.next.next) {
     curr = curr.next;
@@ -36,8 +37,6 @@ function removeDuplicates(head) {
     } else {
       prev = prev.next;
     }
-
-
   }
 
   return sent.next;
