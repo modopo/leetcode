@@ -25,12 +25,24 @@
 function nextGreaterElement(nums1, nums2) {
   let distance = new Map();
   let stack = [];
+  let result = [];
 
   for (let nums of nums2) {
-    let last = stack[stack.length - 1];
-    while (nums > last) {
-      let key = stack.pop();
-      distance.set(key, nums);
+    while (stack.length && nums > stack[stack.length -1]) {
+      distance.set(stack.pop(), nums);
     }
+    stack.push(nums);
   }
+
+  while (stack.length) {
+    distance.set(stack.pop(), -1);
+  }
+
+  for (let nums of nums1) {
+    result.push(distance.get(nums));
+  }
+
+  return result;
 }
+
+console.log(nextGreaterElement([4, 1, 2], [1, 3, 4, 2]))
