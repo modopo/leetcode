@@ -31,7 +31,22 @@
 // Perform second operation four times p="addb", s="", t="".
 
 function robotWithString(s) {
-  let p = [];
-  let str = s.split('');
   let t = [];
+  let p = [];
+  s = s.split('');
+
+  for (let char of s) {
+    while (t.length && char >= t[t.length - 1]) {
+      p.push(t.pop());
+    }
+    t.push(char);
+  }
+
+  while (t.length) {
+    p.push(t.pop());
+  }
+
+  return p.join('');
 }
+
+console.log(robotWithString('bdda'));
