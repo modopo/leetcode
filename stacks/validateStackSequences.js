@@ -14,3 +14,13 @@
 // Input: pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
 // Output: false
 // Explanation: 1 cannot be popped before 2.
+
+function validateStackSequences(pushed, popped) {
+    let count = 0;
+    let stack = [];
+
+    for (let num of pushed) {
+        
+}
+
+console.log(validateStackSequences([1,2,3,4,5], [4,5,3,1,2]))
