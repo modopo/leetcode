@@ -20,7 +20,15 @@ function validateStackSequences(pushed, popped) {
     let stack = [];
 
     for (let num of pushed) {
+      stack.push(num);
+      while (stack.length && stack[stack.length - 1] === popped[count]) {
+        stack.pop();
+        count++;
+      }
+    }
+
+    return pushed.length === count;
         
 }
 
-console.log(validateStackSequences([1,2,3,4,5], [4,5,3,1,2]))
+console.log(validateStackSequences([1,2,3,4,5], [4,5,3,2,1]))
