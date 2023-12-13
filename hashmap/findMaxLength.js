@@ -11,7 +11,7 @@
 // Output: 2
 // Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
 
-function fincMaxLength(nums) {
+function findMaxLength(nums) {
   const map = new Map();
   map.set(0, -1);
 
@@ -28,4 +28,6 @@ function fincMaxLength(nums) {
 
   return maxLen;
 }
+
+console.log(findMaxLength([0, 1, 0, 0, 1, 0]));
 
