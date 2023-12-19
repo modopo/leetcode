@@ -1,9 +1,7 @@
-class TreeNode {
-    constructor(val) {
-      this.val = val;
-      this.left = null;
-      this.right = null;
-    }
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
 }
 
 export default TreeNode;
