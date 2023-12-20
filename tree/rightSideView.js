@@ -11,7 +11,7 @@ function rightSideView(root) {
 
     ans.push(queue[queue.length - 1].val);
 
-    for (let i = 0; i < currentLen.length; i++) {
+    for (let i = 0; i < currentLen; i++) {
       let node = queue[i];
       if (node.left) {
         next.push(node.left);
