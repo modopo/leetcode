@@ -10,17 +10,17 @@
 // Output: 1
 
 function closetValue(root, target) {
-  let diff = Infinity;
-  let result = Infinity;
-  
+  let min = Infinity;
+  let closest = [];
+
   let dfs = (node) => {
     if (!node) {
       return;
     }
 
-    if (Math.abs(node.val - target) < diff) {
-      diff = Math.abs(node.val - target);
-      result = node.val;
+    if (Math.abs(node.val - target) <= min) {
+      min = Math.abs(node.val - target);
+      closest.push({ value: node.val, diff: min });
     }
 
     if (target < node.val) {
@@ -28,8 +28,17 @@ function closetValue(root, target) {
     } else {
       dfs(node.right);
     }
-  }
+  };
 
   dfs(root);
-  return result;
+
+  closest.sort((a, b) => {
+    if (a.diff === b.diff) {
+      return a.value - b.value;
+    } else {
+      return a.diff - b.diff;
+    }
+  });
+
+  return closest[0].value;
 }
