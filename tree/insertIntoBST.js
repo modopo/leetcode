@@ -19,14 +19,12 @@
 
 function insertIntoBST(root, val) {
   if (!root) {
-    return TreeNode(val);
+    return new TreeNode(val);
   }
 
   if (val < root.val) {
     root.left = insertIntoBST(root.left, val);
-  }
-
-  if (val < root.right) {
+  } else {
     root.right = insertIntoBST(root.right, val);
   }
 
