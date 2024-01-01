@@ -3,6 +3,9 @@
 function depthFirst(graph, source) {
   console.log(source);
   
+  for (let neighbors of graph[source]) {
+    depthFirst(graph, neighbors);
+  }
 }
 
 const graph = {
@@ -15,4 +18,4 @@ const graph = {
 }
 
 //abdfce
-dfs(graph, 'a');
+depthFirst(graph, 'a');
