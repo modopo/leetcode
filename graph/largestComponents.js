@@ -5,7 +5,7 @@ function largestComponent(graph) {
   let result = 0;
   let seen = new Set();
 
-  let dfs = (graph, current, seen, total) => {
+  let dfs = (graph, current, seen) => {
     if (seen.has(String(current))) {
       return 0;
     }
