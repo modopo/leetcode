@@ -22,15 +22,15 @@ let shortestPath = (grid, k) => {
         [-1, 0],
         [0, -1],
     ];
-    let seen = new Set();
-    let queue = [[[0, 0], 0]];
+    let seen = new Map();
+    let queue = [[[0, 0], 0, k]];
 
     let inBound = (r, c) => {
         return 0 <= r && r < grid.length && 0 <= c && c < grid[0].length;
     };
 
     while (queue.length) {
-        let [current, dist] = queue.shift();
+        let [current, dist, remain] = queue.shift();
         let coord = current[0] + "," + current[1];
 
         if (
@@ -44,15 +44,15 @@ let shortestPath = (grid, k) => {
             let nextRow = current[0] + dy,
                 nextCol = current[1] + dx;
             coord = nextRow + "," + nextCol;
-            if (!seen.has(coord) && inBound(nextRow, nextCol)) {
-                seen.add(coord);
-                if (grid[nextRow][nextCol] === 1 && k > 0) {
-                    k--;
-                    queue.push([[nextRow, nextCol], dist + 1]);
+            if ((!seen.has(coord) || seen.get(coord) < remain) && inBound(nextRow, nextCol)) {
+                seen.set(coord, remain);
+
+                if (grid[nextRow][nextCol] === 1 && remain > 0) {
+                    queue.push([[nextRow, nextCol], dist + 1, remain - 1]);
                 }
 
                 if (grid[nextRow][nextCol] === 0) {
-                    queue.push([[nextRow, nextCol], dist + 1]);
+                    queue.push([[nextRow, nextCol], dist + 1, remain]);
                 }
             }
         }
@@ -60,3 +60,20 @@ let shortestPath = (grid, k) => {
 
     return -1;
 };
+
+let grid = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+    [0, 1, 0, 1, 1, 1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+];
+
+console.log(shortestPath(grid, 1));
