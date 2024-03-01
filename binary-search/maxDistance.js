@@ -15,7 +15,7 @@ function maxDistance(nums1, nums2) {
 function bSearch(arr, num) {
   let left = 0,
     right = arr.length - 1;
-  while (left < right) {
+  while (left <= right) {
     let mid = Math.floor((left + right) / 2);
 
     if (arr[mid] < num) {
@@ -24,5 +24,5 @@ function bSearch(arr, num) {
       left = mid;
     }
   }
-  return left;
+  return left - 1;
 }
