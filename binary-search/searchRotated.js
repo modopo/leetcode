@@ -25,3 +25,5 @@ function search(nums, target) {
   }
   return -1;
 }
+
+let test = [1, 2, 3, 4, 5];
