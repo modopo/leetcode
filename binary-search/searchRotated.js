@@ -16,7 +16,7 @@ function search(nums, target) {
         left = mid + 1;
       }
     } else {
-      if (nums[mid] < target && target <= nums[right]) {
+      if (target <= nums[right] && nums[mid] < target) {
         left = mid + 1;
       } else {
         right = mid - 1;
@@ -25,5 +25,3 @@ function search(nums, target) {
   }
   return -1;
 }
-
-let test = [1, 2, 3, 4, 5];
